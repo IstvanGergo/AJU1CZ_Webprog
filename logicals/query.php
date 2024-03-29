@@ -4,13 +4,9 @@ $username = "username";
 $password = "password";
 $dbname = "your_database_name";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+$dbh = new PDO('mysql:host=localhost;port=80;dbname=handyman searcher', 'root', '',
+                            array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+            $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
 
 // Fetch handymen based on specialty
 if(isset($_GET['specialty'])) {

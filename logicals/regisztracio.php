@@ -22,7 +22,8 @@
             }
             else {
                 // Ha nem létezik, akkor regisztráljuk
-                $sqlInsert = "insert into users(User_ID, User_Name, User_Email, User_Surname, User_Forename, User_Password)
+                $sqlInsert = "insert into
+                              users(User_ID, User_Name, User_Email, User_Surname, User_Forename, User_Password)
                               values(0, :username, :email, :surname, :forename, :password)";
                 $stmt = $dbh->prepare($sqlInsert);
                 $stmt->execute(array(':email' => $_POST['email'], ':surname' => $_POST['surname'],

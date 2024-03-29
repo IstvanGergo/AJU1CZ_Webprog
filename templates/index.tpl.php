@@ -1,33 +1,35 @@
+<?php session_start(); ?>
+<?php if(file_exists('./logicals/'.$keres['fajl'].'.php')) { include_once "./logicals/{$keres['fajl']}.php"; } ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title><?= $ablakcim['cim'] . ( (isset($ablakcim['mottó'])) ? ('|' . $ablakcim['mottó']) : '' ) ?></title>
-
-    <link rel="stylesheet" href="./style/stilus.css" type="text/css">
-    <?php if(file_exists('./style/'.$keres['fajl'].'.css')) 
-        { ?><link rel="stylesheet" href="./style/<?= 
-        $keres['fajl']?>.css" type="text/css">
-    <?php } ?>
+	<meta charset="utf-8">
+	<title><?= $ablakcim['cim'] ?></title>
+	<link rel="stylesheet" href="./styles/stilus.css" type="text/css">
+	<?php if(file_exists('./styles/'.$keres['fajl'].'.css')) { ?>
+        <link rel="stylesheet" href="./styles/<?= $keres['fajl']?>.css" type="text/css"><?php
+        } ?>
 </head>
 <body>
-<header>
-    <h1><?= $fejlec['cim'] ?></h1>
-    <?php if (isset($fejlec['motto'])) { ?><h2><?= $fejlec['motto'] ?></h2><?php } ?>
-</header>
+	<header>
+		<img src="./images/<?=$fejlec['kepforras']?>" alt="<?=$fejlec['kepalt']?>" width="60" height="60">
+		<h1><?= $fejlec['cim'] ?></h1>
+		<?php if(isset($_SESSION['login'])) { ?>
+            Bejlentkezve: <strong><?= $_SESSION['csn']." ".$_SESSION['un']." (".$_SESSION['login'].")" ?></strong><?php
+            } ?>
+	</header>
     <div id="wrapper">
-        <aside id="nav"> 
+        <aside id="nav">
             <nav>
-                <ul> 
-                    <?php foreach ($oldalak as $url => $oldal) { if($oldal['menu'])
-                        { ?>
-                        <li<?= (($oldal == $keres) ? ' class="active"' : '') ?>>
-                        <a href="index.php<?= ($url == '/') ? '' : ('?oldal=' . $url) ?>">
-                        <?= $oldal['szoveg'] ?></a>
-</li>
-<?php 
-}} ?>
-
+                <ul>
+					<?php foreach ($oldalak as $url => $oldal) { ?>
+						<?php if(! isset($_SESSION['login']) && $oldal['menu'][0] || isset($_SESSION['login']) && $oldal['menu'][1]) { ?>
+							<li<?= (($oldal == $keres) ? ' class="active"' : '') ?>>
+							<a href="<?= ($url == '/') ? '.' : ('?oldal=' . $url) ?>">
+							<?= $oldal['szoveg'] ?></a>
+							</li>
+						<?php } ?>
+					<?php } ?>
                 </ul>
             </nav>
         </aside>
@@ -35,11 +37,10 @@
             <?php include_once "./templates/pages/{$keres['fajl']}.tpl.php"; ?>
         </div>
     </div>
-    
+    <footer>
+        <?php if(isset($lablec['copyright'])) { ?>&copy;&nbsp;<?= $lablec['copyright'] ?> <?php } ?>
+		&nbsp;
+        <?php if(isset($lablec['ceg'])) { ?><?= $lablec['ceg']; ?><?php } ?>
+    </footer>
 </body>
-<footer>
-    <?php if(isset($lablec['copyright'])) { ?>&copy;&nbsp;<?= $lablec['copyright'] ?><?php } ?>
-    &nbsp;
-    <?php if(isset($lablec['ceg'])) { ?><?= $lablec['ceg']; ?><?php } ?>
-</footer>
 </html>

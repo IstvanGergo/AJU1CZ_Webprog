@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2024. Már 18. 18:53
+-- Létrehozás ideje: 2024. Már 29. 17:48
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -85,11 +85,20 @@ CREATE TABLE `professions` (
 
 CREATE TABLE `users` (
   `User_ID` int(11) NOT NULL,
-  `User_Password` varchar(200) NOT NULL,
   `User_Name` varchar(30) NOT NULL,
   `User_Email` varchar(100) NOT NULL,
+  `User_Surname` varchar(25) NOT NULL,
+  `User_Forename` varchar(30) NOT NULL,
+  `User_Password` varchar(200) NOT NULL,
   `User_Handyman_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- A tábla adatainak kiíratása `users`
+--
+
+INSERT INTO `users` (`User_ID`, `User_Name`, `User_Email`, `User_Surname`, `User_Forename`, `User_Password`, `User_Handyman_ID`) VALUES
+(2, 'asd', 'asd@asd.hu', 'asd', 'dsa', 'asda', NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -136,7 +145,7 @@ ALTER TABLE `professions`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`User_ID`),
   ADD UNIQUE KEY `User_Email` (`User_Email`),
-  ADD UNIQUE KEY `User_Handyman_ID` (`User_Handyman_ID`);
+  ADD UNIQUE KEY `User_Name` (`User_Name`);
 
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
@@ -164,7 +173,7 @@ ALTER TABLE `professions`
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -188,12 +197,6 @@ ALTER TABLE `handymans`
 ALTER TABLE `hanydmans_professions`
   ADD CONSTRAINT `hanydmans_professions_ibfk_1` FOREIGN KEY (`Handyman_ID`) REFERENCES `handymans` (`Handyman_ID`),
   ADD CONSTRAINT `hanydmans_professions_ibfk_2` FOREIGN KEY (`Profession_ID`) REFERENCES `professions` (`Profession_ID`);
-
---
--- Megkötések a táblához `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`User_Handyman_ID`) REFERENCES `handymans` (`Handyman_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
