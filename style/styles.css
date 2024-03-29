@@ -1,0 +1,48 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+#search-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#results-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.handyman {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+a {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    float:right;
+    width:auto; /* Fix szélességű gombok érhetők el. Érdemes azonban vigyázni ezzel a módszerrel, mert ha a szöveg nem fér ki, a dizájn szétesik. */
+    text-decoration:none; /* Ne legyen aláhúzva a link. */
+    color:black;
+    padding:0.5em 2em;
+    border-right:1px solid burlywood;
+    text-align: center;
+}
+a:hover { background-color:cadetblue} /* Az egérkurzorra színváltással reagál a menüpont. */
+ul {
+    float:right;
+    width:100%; /* A menü az alatta levő szövegtől elválik, birtokolja a teljes vízszintes sávját. */
+    padding:0;
+    margin:0;
+    list-style-type:none;
+    background-color: aliceblue;
+}
+form {
+    float:left;
+    padding:0.5em 0.6em;
+}
