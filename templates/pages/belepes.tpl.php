@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style/styles.css">
 </head>
 <body>
-    <form action = "logicals/belepes.php" method = "post">
+    <form action = "?oldal=belep" method = "post">
         <fieldset>
           <legend>Bejelentkezés</legend>
           <br>

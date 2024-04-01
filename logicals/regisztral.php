@@ -1,9 +1,9 @@
 <?php
-    if(isset($_POST['email'])
+    if(isset($_POST['User_Email'])
     && isset($_POST['surname'])
-    && isset($_POST['forename'])
-    && isset($_POST['username'])
-    && isset($_POST['password'])) {
+    && isset($_POST['User_Forename'])
+    && isset($_POST['User_Name'])
+    && isset($_POST['User_Password'])) {
         try {
             // Kapcsolódás
             $dbh = new PDO('mysql:host=localhost;port=80;dbname=handyman searcher', 'root', '',
@@ -13,23 +13,30 @@
             // Létezik már a felhasználói név?
             $sqlSelect = "select User_ID from users where User_Name = :username OR User_Email = :email";
             $sth = $dbh->prepare($sqlSelect);
-            $sth->execute(array(':username' => $_POST['username']));
-            $sth->execute(array(':email' => $_POST['email']));
-
-            if($row = $sth->fetch(PDO::FETCH_ASSOC)) {
-                $uzenet = "A felhasználónév vagy email már foglalt!";
-                $ujra = "true";
+            $sth->execute(array(':username' => $_POST['User_Name']));
+            $row = $sth->fetch(PDO::FETCH_ASSOC);
+            if($row) {
+                $uzenet = "A felhasználónév már foglalt!";
+                $ujra = true;
             }
+            $sth->execute(array(':email' => $_POST['User_Email']));
+            $row = $sth->fetch(PDO::FETCH_ASSOC);
+            if($row) {
+                $uzenet = "A email már foglalt!";
+                $ujra = true;
+            }
+
             else {
                 // Ha nem létezik, akkor regisztráljuk
                 $sqlInsert = "insert into
                               users(User_ID, User_Name, User_Email, User_Surname, User_Forename, User_Password)
                               values(0, :username, :email, :surname, :forename, :password)";
                 $stmt = $dbh->prepare($sqlInsert);
-                $stmt->execute(array(':email' => $_POST['email'], ':surname' => $_POST['surname'],
-                                     ':forename' => $_POST['forename'], ':username' => $_POST['username'],
-                                     ':password' => sha1($_POST['password']))); 
-                if($count = $stmt->rowCount()) {
+                $stmt->execute(array(':email' => $_POST['User_Email'], ':surname' => $_POST['surname'],
+                                     ':forename' => $_POST['User_Forename'], ':username' => $_POST['User_Name'],
+                                     ':password' => sha1($_POST['User_Password'])));
+                $count = $stmt->rowCount();
+                if($count) {
                     $newid = $dbh->lastInsertId();
                     $uzenet = "A regisztrációja sikeres.<br>Azonosítója: {$newid}";
                     $ujra = false;
@@ -46,18 +53,3 @@
     }
 
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Regisztráció</title>
-        <meta charset="utf-8">
-    </head>
-    <body>
-        <?php if(isset($uzenet)) { ?>
-            <h1><?= $uzenet ?></h1>
-            <?php if($ujra) { ?>
-                <a href="pelda.html">Próbálja újra!</a>
-            <?php } ?>
-        <?php } ?>
-    </body>
-</html>

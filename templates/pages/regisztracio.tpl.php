@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style/styles.css">
 </head>
 <body>
-    <form action = "logicals/regisztracio.php" method = "post">
+    <form action = "?oldal=regisztral" method = "post">
         <fieldset>
           <legend>Regisztráció</legend>
           <br>
