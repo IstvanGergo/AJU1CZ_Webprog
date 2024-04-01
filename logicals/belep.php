@@ -10,13 +10,13 @@ if(isset($_POST['felhasznalo']) && isset($_POST['password'])) {
         $sqlSelect = "select User_ID, User_Name, User_Surname, User_Forename
                       from users where User_Email = :email and User_Password = sha1(:password)";
         $sth = $dbh->prepare($sqlSelect);
-        $sth->execute(array(':email' => $_POST['User_Name'], ':password' => $_POST['password']));
+        $sth->execute(array(':email' => $_POST['User_Name'], ':password' => $_POST['User_Password']));
         $row = $sth->fetch(PDO::FETCH_ASSOC);
         if($row) {
-            if(password_verify($_POST['password'], $row['password'])) {
-                $_SESSION['csn'] = $row['User_Forename'];
-                $_SESSION['un'] = $row['User_Surname'];
-                $_SESSION['login'] = $_POST['User_Name'];
+            if(password_verify($_POST['User_Password'], $row['User_Password'])) {
+                $_SESSION['User_Forename'] = $row['User_Forename'];
+                $_SESSION['User_Surname'] = $row['User_Surname'];
+                $_SESSION['User_Name'] = $_POST['User_Name'];
             }
             else
             {

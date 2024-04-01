@@ -1,6 +1,6 @@
 <?php
     if(isset($_POST['User_Email'])
-    && isset($_POST['surname'])
+    && isset($_POST['User_Surname'])
     && isset($_POST['User_Forename'])
     && isset($_POST['User_Name'])
     && isset($_POST['User_Password'])) {
@@ -32,7 +32,7 @@
                               users(User_ID, User_Name, User_Email, User_Surname, User_Forename, User_Password)
                               values(0, :username, :email, :surname, :forename, :password)";
                 $stmt = $dbh->prepare($sqlInsert);
-                $stmt->execute(array(':email' => $_POST['User_Email'], ':surname' => $_POST['surname'],
+                $stmt->execute(array(':email' => $_POST['User_Email'], ':surname' => $_POST['User_Surname'],
                                      ':forename' => $_POST['User_Forename'], ':username' => $_POST['User_Name'],
                                      ':password' => sha1($_POST['User_Password'])));
                 $count = $stmt->rowCount();
