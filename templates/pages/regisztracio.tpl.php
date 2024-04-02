@@ -11,11 +11,11 @@
         <fieldset>
           <legend>Regisztráció</legend>
           <br>
-          <input type="text" name="email" placeholder="Email" required><br><br>
-          <input type="text" name="surname" placeholder="Vezetéknév" required><br><br>
-          <input type="text" name="forename" placeholder="Keresztnév" required><br><br>
-          <input type="text" name="username" placeholder="Felhasználói név" required><br><br>
-          <input type="password" name="password" placeholder="Jelszó" required><br><br>
+          <input type="text" name="User_Email" placeholder="Email" required><br><br>
+          <input type="text" name="User_Surname" placeholder="Vezetéknév" required><br><br>
+          <input type="text" name="User_Forename" placeholder="Keresztnév" required><br><br>
+          <input type="text" name="User_Name" placeholder="Felhasználói név" required><br><br>
+          <input type="password" name="User_Password" placeholder="Jelszó" required><br><br>
           <input type="submit" name="regisztracio" value="Regisztráció">
           <br>&nbsp;
         </fieldset>

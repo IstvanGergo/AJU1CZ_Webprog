@@ -1,16 +1,17 @@
 <?php
-if(isset($_POST['felhasznalo']) && isset($_POST['password'])) {
+if(isset($_POST['User_Email'])
+&& isset($_POST['User_Password'])) {
     try {
         // Kapcsolódás
-        $dbh = new PDO('mysql:host=localhost;dbname=handyman searcher', 'root', '',
-                        array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION));
+        $dbh = new PDO('mysql:host=localhost;dbname=handyman searcher', 'root', '');
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
         
         // Felhasználó keresése
         $sqlSelect = "select User_ID, User_Name, User_Surname, User_Forename
-                      from users where User_Email = :email and User_Password = sha1(:password)";
+                    from users where User_Email = :email and User_Password = sha1(:password)";
         $sth = $dbh->prepare($sqlSelect);
-        $sth->execute(array(':email' => $_POST['User_Name'], ':password' => $_POST['User_Password']));
+        $sth->execute(array(':email' => $_POST['User_Email'], ':password' => $_POST['User_Password']));
         $row = $sth->fetch(PDO::FETCH_ASSOC);
         if($row) {
             if(password_verify($_POST['User_Password'], $row['User_Password'])) {
@@ -29,4 +30,3 @@ if(isset($_POST['felhasznalo']) && isset($_POST['password'])) {
         echo "Hiba: ".$e->getMessage();
     }
 }
-?>

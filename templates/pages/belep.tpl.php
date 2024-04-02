@@ -1,8 +1,7 @@
 <?php if(isset($row)) { ?>
     <?php if($row) { ?>
         <h1>Bejelentkezett:</h1>
-        Azonosító: <strong><?= $row['id'] ?></strong><br><br>
-        Név: <strong><?= $row['csaladi_nev']." ".$row['utonev'] ?></strong>
+        Név: <strong><?= $row['User_Forename']." ".$row['User_Surname'] ?></strong>
     <?php } else { ?>
         <h1>A bejelentkezés nem sikerült!</h1>
         <a href="?oldal=belepes" >Próbálja újra!</a>

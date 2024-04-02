@@ -1,5 +1,9 @@
-<?php session_start(); ?>
-<?php if(file_exists('./logicals/'.$keres['fajl'].'.php')) { include_once "./logicals/{$keres['fajl']}.php"; } ?>
+<?php session_start(); 
+if(file_exists('./logicals/'.$keres['fajl'].'.php'))
+{
+    include_once "./logicals/{$keres['fajl']}.php";
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +18,11 @@
 	<header>
 		<img src="./images/<?=$fejlec['kepforras']?>" alt="<?=$fejlec['kepalt']?>" width="60" height="60">
 		<h1><?= $fejlec['cim'] ?></h1>
-		<?php if(isset($_SESSION['login'])) { ?>
-            Bejlentkezve: <strong><?= $_SESSION['csn']." ".$_SESSION['un']." (".$_SESSION['login'].")" ?></strong><?php
+		<?php if(isset($_SESSION['User_Name'])) { ?>
+            Bejelentkezve: 
+            <strong><?= $_SESSION['User_Forename']."
+            ".$_SESSION['User_Surname']."
+            (".$_SESSION['User_Name'].")" ?></strong><?php
             } ?>
 	</header>
     <div id="wrapper">
@@ -23,7 +30,7 @@
             <nav>
                 <ul>
 					<?php foreach ($oldalak as $url => $oldal) { ?>
-						<?php if(! isset($_SESSION['login']) && $oldal['menu'][0] || isset($_SESSION['login']) && $oldal['menu'][1]) { ?>
+						<?php if(! isset($_SESSION['User_Name']) && $oldal['menu'][0] || isset($_SESSION['User_Name']) && $oldal['menu'][1]) { ?>
 							<li<?= (($oldal == $keres) ? ' class="active"' : '') ?>>
 							<a href="<?= ($url == '/') ? '.' : ('?oldal=' . $url) ?>">
 							<?= $oldal['szoveg'] ?></a>
