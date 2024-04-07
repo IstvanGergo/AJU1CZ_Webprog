@@ -14,7 +14,7 @@ $lablec = array(
 $oldalak = array(
     '/' =>array('fajl' => 'mainpage', 'szoveg' => 'Főoldal', 'menu' => array(1,1)),
     'belepes' =>array('fajl' => 'belepes', 'szoveg' => 'Belépés', 'menu' =>  array(1,0)),
-    'kilepes' => array('fajl' => 'kilepes', 'szoveg' => 'Kilépés', 'menu' => array(0,1)),
+    'kilep' => array('fajl' => 'kilep', 'szoveg' => 'Kilépés', 'menu' => array(0,1)),
     'regisztracio' =>array('fajl' => 'regisztracio', 'szoveg' => 'Regisztráció', 'menu' =>  array(1,0)),
     'profil' =>array('fajl' => 'profil', 'szoveg' => 'Profil', 'menu' =>  array(1,1)),
     'belep' => array('fajl' => 'belep', 'szoveg' => '', 'menu' => array(0,0)),
