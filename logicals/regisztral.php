@@ -28,7 +28,7 @@ if(isset($_POST['User_Email'])
             $stmt = $dbh->prepare($sqlInsert);
             $stmt->execute(array(':email' => $_POST['User_Email'], ':surname' => $_POST['User_Surname'],
                                     ':forename' => $_POST['User_Forename'], ':username' => $_POST['User_Name'],
-                                    ':password' => sha1($_POST['User_Password'])));
+                                    ':password' => password_hash($_POST['User_Password'], PASSWORD_DEFAULT)));
             $count = $stmt->rowCount();
             if($count) {
                 $newid = $dbh->lastInsertId();
