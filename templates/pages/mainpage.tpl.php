@@ -9,7 +9,10 @@
 <body>
     <nav>
         <ul>
-            <li><form>
+            <li>
+            <a href="keres.php">Keresés</a>
+            </li>
+            <li><form id="szakik">
                 <select name="Szakmák" >
                 <option value="initval" selected>Milyen szakit keresel?</option>
                 <option value="asztalos">Asztalos</option>
@@ -26,11 +29,15 @@
                 <option value="vizszerelo">Vízszerelő</option>
                 <option value="villanyszerelo">Villanyszerelő</option>
                 </select>
-                </form></li>
-            <li>
-                <a href="keres.php">Keresés</a>
+                </form>
             </li>
         </ul>
     </nav>
+    <h1>
+        Szakembert keres? Jó helyen jár!
+    </h1>
+    <h2>
+        Itt megtalálja országszerte a legjobb szakembereket!
+    </h2>
 </body>
 </html>

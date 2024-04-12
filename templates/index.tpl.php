@@ -1,4 +1,4 @@
-<?php session_start(); 
+<?php session_start();
 if(file_exists('./logicals/'.$keres['fajl'].'.php'))
 {
     include_once "./logicals/{$keres['fajl']}.php";
@@ -16,10 +16,12 @@ if(file_exists('./logicals/'.$keres['fajl'].'.php'))
 </head>
 <body>
 	<header>
-		<img src="./images/<?=$fejlec['kepforras']?>" alt="<?=$fejlec['kepalt']?>" width="60" height="60">
-		<h1><?= $fejlec['cim'] ?></h1>
+	<h1>
+        <img src="./images/<?=$fejlec['kepforras']?>" alt="<?=$fejlec['kepalt']?>" width="60" height="60">
+        <?= $fejlec['cim'] ?>
+    </h1>
 		<?php if(isset($_SESSION['User_Name'])) { ?>
-            Bejelentkezve: 
+            Bejelentkezve:
             <strong><?= $_SESSION['User_Forename']."
             ".$_SESSION['User_Surname']."
             (".$_SESSION['User_Name'].")" ?></strong><?php
