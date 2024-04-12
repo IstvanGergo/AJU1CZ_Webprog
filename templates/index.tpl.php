@@ -46,7 +46,7 @@ if(file_exists('./logicals/'.$keres['fajl'].'.php'))
             <?php include_once "./templates/pages/{$keres['fajl']}.tpl.php"; ?>
         </div>
     </div>
-    <footer>
+    <footer id="site-footer">
         <?php if(isset($lablec['copyright'])) { ?>&copy;&nbsp;<?= $lablec['copyright'] ?> <?php } ?>
 		&nbsp;
         <?php if(isset($lablec['ceg'])) { ?><?= $lablec['ceg']; ?><?php } ?>

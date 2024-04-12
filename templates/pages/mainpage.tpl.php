@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Handyman Searcher</title>
+    <script>src="logicals/mindenmunkas.js"</script>
     <link rel="stylesheet" href="style/styles.css">
 </head>
 <body>
-    <nav>
+    <?php if(isset($_SESSION['User_Name'])){?>
+        <nav>
         <ul>
             <li>
             <a href="keres.php">Keresés</a>
@@ -33,11 +35,14 @@
             </li>
         </ul>
     </nav>
+    <?php } else { ?>
     <h1>
         Szakembert keres? Jó helyen jár!
     </h1>
     <h2>
-        Itt megtalálja országszerte a legjobb szakembereket!
+        Itt megtalálja országszerte a legjobb szakembereket! <br>
+        Kérjük regisztráljon, vagy jelentkezzen be!
     </h2>
+    <?php ;}?>
 </body>
 </html>
