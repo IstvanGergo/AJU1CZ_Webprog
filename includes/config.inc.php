@@ -16,7 +16,7 @@ $oldalak = array(
     'belepes' =>array('fajl' => 'belepes', 'szoveg' => 'Belépés', 'menu' =>  array(1,0)),
     'kilep' => array('fajl' => 'kilep', 'szoveg' => 'Kilépés', 'menu' => array(0,1)),
     'regisztracio' =>array('fajl' => 'regisztracio', 'szoveg' => 'Regisztráció', 'menu' =>  array(1,0)),
-    'profil' =>array('fajl' => 'profil', 'szoveg' => 'Profil', 'menu' =>  array(0,1)),
+    'keres'=>array('fajl' => 'keres', 'szoveg' => 'Profil', 'menu' =>  array(0,0)),
     'belep' => array('fajl' => 'belep', 'szoveg' => '', 'menu' => array(0,0)),
     'regisztral' => array('fajl' => 'regisztral', 'szoveg' => '', 'menu' => array(0,0))
 );
