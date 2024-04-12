@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Handyman Searcher</title>
-    <script src="logicals/mindenmunkas.js"></script>
+    <script src="logicals/printworkers.js"></script>
     <link rel="stylesheet" href="style/styles.css">
 </head>
 <body>
+    <div id="content-wrap">
     <?php if(isset($_SESSION['User_Name'])){?>
         <nav>
         <ul>
-            <li><form action="?oldal=keres" id="szakik" method="post">
+            <li><form action="javascript:;" name="Szakmák" onsubmit="SearchByProf()" method="get">
                 <select name="Szakmák">
                 <option value="initval" selected>Milyen szakit keresel?</option>
-                <option value="asztalos">Asztalos</option>
-                <option value="acs">Ács</option>
-                <option value="burkolo">Burkoló</option>
-                <option value="festő">Festő</option>
-                <option value="fűtésszerelő">Fűtésszerelő</option>
-                <option value="gázszerelő">Gázszerelő</option>
-                <option value="kertesz">Kertész</option>
-                <option value="lakatos">Lakatos</option>
-                <option value="otvos">Ötvös</option>
-                <option value="szabo">Szabó</option>
-                <option value="villanyszerelo">Villanyszerelő</option>
-                <option value="vizszerelo">Vízszerelő</option>
-                <option value="villanyszerelo">Villanyszerelő</option>
+                <option value="Asztalos">Asztalos</option>
+                <option value="Ács">Ács</option>
+                <option value="Burkoló">Burkoló</option>
+                <option value="Festő">Festő</option>
+                <option value="Fűtésszerelő">Fűtésszerelő</option>
+                <option value="Gázszerelő">Gázszerelő</option>
+                <option value="Kertész">Kertész</option>
+                <option value="Lakatos">Lakatos</option>
+                <option value="Ötvös">Ötvös</option>
+                <option value="Szabó">Szabó</option>
+                <option value="Vízszerelő">Vízszerelő</option>
+                <option value="Villanyszerelő">Villanyszerelő</option>
                 </select>
                 <button type="submit"name="submit">Keresés</button>
                 </form>
@@ -44,5 +44,6 @@
         Kérjük regisztráljon, vagy jelentkezzen be!
     </h2>
     <?php ;}?>
+    </div>
 </body>
 </html>

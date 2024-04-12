@@ -38,6 +38,9 @@ ul {
     list-style-type:none;
     background-color: aliceblue;
 }
+nav{
+    padding-bottom: 30px;
+}
 form {
     float:left;
     padding:0.5em 0.6em;
@@ -45,6 +48,24 @@ form {
 #szakik{
     float:right;
 }
-#worker-box{
-    margin:10,10,10,10;
+.worker-box{
+    padding:10px 20px;
+    background-color: #b4f4ff;
+    border-color: black;
+    border-style: dotted;
+    
 }
+body{
+    position: relative;
+    min-height: 100vh;
+}
+#site-footer {
+    background:#6cf;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+ }
+ #content-wrap {
+    padding-bottom: 2.5rem;    /* Footer height */
+  }

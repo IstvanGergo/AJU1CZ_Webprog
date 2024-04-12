@@ -9,7 +9,7 @@ if(file_exists('./logicals/'.$keres['fajl'].'.php'))
 <head>
 	<meta charset="utf-8">
 	<title><?= $ablakcim['cim'] ?></title>
-	<link rel="stylesheet" href="./styles/stilus.css" type="text/css">
+	<link rel="stylesheet" href="./style/styles.css" type="text/css">
 	<?php if(file_exists('./styles/'.$keres['fajl'].'.css')) { ?>
         <link rel="stylesheet" href="./styles/<?= $keres['fajl']?>.css" type="text/css"><?php
         } ?>
