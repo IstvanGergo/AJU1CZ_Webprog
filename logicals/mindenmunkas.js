@@ -1,4 +1,4 @@
-document.body.addEventListener('load', function () {
+document.addEventListener('DOMContentLoaded', function () {
     generateWorkerBoxes();
 });
 

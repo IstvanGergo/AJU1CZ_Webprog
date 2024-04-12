@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Handyman Searcher</title>
-    <script>src="logicals/mindenmunkas.js"</script>
+    <script src="logicals/mindenmunkas.js"></script>
     <link rel="stylesheet" href="style/styles.css">
 </head>
 <body>
@@ -35,6 +35,8 @@
             </li>
         </ul>
     </nav>
+    <div id = workers-container>
+    </div>
     <?php } else { ?>
     <h1>
         Szakembert keres? Jó helyen jár!

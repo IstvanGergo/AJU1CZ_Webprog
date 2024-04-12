@@ -27,14 +27,14 @@ try {
     $sth->execute();
     $cities_row = $sth->fetchAll(PDO::FETCH_ASSOC);
     
-    if ($professions_row > 0 && $cities_row > 0) {
+    if ($handymans_row && $professions_row  && $cities_row ) {
         foreach($professions_row as $professions) {
             $data[$professions_row['Handyman_ID']]['Profession_Name'] = $professions;
         }
         foreach($cities_row as $cities) {
             $data[$cities_row['Handyman_ID']]['City_Name'][] = $cities;
         }
-        return json_encode(array_values($data));
+        echo json_encode(array_values($data));
     }
 
     else{
