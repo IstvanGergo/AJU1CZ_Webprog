@@ -17,24 +17,32 @@ try {
     $sth = $dbh->prepare($handymans_query);
     $sth->execute();
     $handymans_row = $sth->fetchAll(PDO::FETCH_ASSOC);
-    $data = array();
-    $data = $handymans_row;
     $sth = $dbh->prepare($professions_query);
     $sth->execute();
     $professions_row = $sth->fetchAll(PDO::FETCH_ASSOC);
-
+    
     $sth = $dbh->prepare($cities_query);
     $sth->execute();
     $cities_row = $sth->fetchAll(PDO::FETCH_ASSOC);
-    
+    $data = array();
+    $data = $handymans_row;
     if ($handymans_row && $professions_row  && $cities_row ) {
-        foreach($professions_row as $professions) {
-            $data[$professions_row['Handyman_ID']]['Profession_Name'] = $professions;
+        for($i=0; $i<count($handymans_row);$i++){
+            $handymans_row[$i]['Cities'] = array();
+            $handymans_row[$i]['Professions'] = array();
+            foreach($cities_row as $cities) {
+                if($cities['Handyman_ID'] == $handymans_row[$i]['Handyman_ID']){
+                    $handymans_row[$i]['Cities'][] = $cities['City_Name'];
+                }
+            }
+            foreach($professions_row as $professions) {
+                if($professions['Handyman_ID'] == $handymans_row[$i]['Handyman_ID']){
+                    $handymans_row[$i]['Professions'][] = $professions['Profession_Name'];
+                }
+            }
         }
-        foreach($cities_row as $cities) {
-            $data[$cities_row['Handyman_ID']]['City_Name'][] = $cities;
-        }
-        echo json_encode(array_values($data));
+        echo json_encode(array_values($handymans_row), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        
     }
 
     else{

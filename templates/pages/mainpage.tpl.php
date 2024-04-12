@@ -11,11 +11,8 @@
     <?php if(isset($_SESSION['User_Name'])){?>
         <nav>
         <ul>
-            <li>
-            <a href="keres.php">Keresés</a>
-            </li>
-            <li><form id="szakik">
-                <select name="Szakmák" >
+            <li><form action="?oldal=keres" id="szakik" method="post">
+                <select name="Szakmák">
                 <option value="initval" selected>Milyen szakit keresel?</option>
                 <option value="asztalos">Asztalos</option>
                 <option value="acs">Ács</option>
@@ -31,6 +28,7 @@
                 <option value="vizszerelo">Vízszerelő</option>
                 <option value="villanyszerelo">Villanyszerelő</option>
                 </select>
+                <button type="submit"name="submit">Keresés</button>
                 </form>
             </li>
         </ul>

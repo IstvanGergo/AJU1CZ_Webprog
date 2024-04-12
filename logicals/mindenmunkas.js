@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function generateWorkerBoxes() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'mindenmunkas.php');
+    xhr.open('GET', 'logicals/mindenmunkas.php');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 ) {
             const workers = JSON.parse(xhr.responseText);
@@ -19,13 +19,16 @@ function generateWorkerBoxes() {
                 box.appendChild(nameElement);
 
                 const professionsElement = document.createElement('p');
-                professionsElement.textContent = 'Szakmák: ' + worker.Profession_Name.join(', ');
+                professionsElement.textContent = 'Szakmák: ' + worker.Professions.join(', ');
                 box.appendChild(professionsElement);
 
                 const citiesElement = document.createElement('p');
-                citiesElement.textContent = 'Elérhető városok: ' + worker.City_Name.join(', ');
+                citiesElement.textContent = 'Elérhető városok: ' + worker.Cities.join(', ');
                 box.appendChild(citiesElement);
-
+                
+                const phoneNumElement = document.createElement('p');
+                phoneNumElement.textContent = 'Telefonszám: ' + worker.Handyman_Phonenum;
+                box.appendChild(phoneNumElement);
                 container.appendChild(box); // A munkás doboz hozzáadása a tartalomhoz
             });
         }

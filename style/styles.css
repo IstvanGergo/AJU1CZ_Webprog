@@ -45,10 +45,6 @@ form {
 #szakik{
     float:right;
 }
-#site-footer {
-    position:absolute;
-    bottom:0;
-    width:100%;
-    height:60px;   /* Height of the footer */
-    background:#6cf;
- }
+#worker-box{
+    margin:10,10,10,10;
+}
